@@ -26,7 +26,7 @@ public class Producer implements Runnable {
                     Product newProduct = new Product(newName);
                     warehouse.push(newProduct);
                     Thread.sleep(500);
-                    System.out.println("[" + Thread.currentThread().getName() + "]正在执行，已生产产品:" + newProduct.getName());
+                    System.out.println("[" + Thread.currentThread().getName() + "]已生产产品：" + newProduct.getName());
                     if ("Z".equals(newName)) {
                         ifComplete = true;
                         System.out.println("=========生产完成===========");
@@ -40,9 +40,9 @@ public class Producer implements Runnable {
             } else {
 
                 try {
-                    System.out.println("[" + Thread.currentThread().getName() + "]开始执行，仓库已满，正在等待...");
+                    System.out.println("[" + Thread.currentThread().getName() + "]仓库已满，正在等待...");
                     warehouse.wait();
-                    System.out.println("[" + Thread.currentThread().getName() + "]开始执行，等待结束，准备生产...");
+                    System.out.println("[" + Thread.currentThread().getName() + "]等待结束，准备生产...");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
